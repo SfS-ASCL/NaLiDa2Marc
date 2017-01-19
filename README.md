@@ -12,7 +12,7 @@ The conversion from SfS-specific CMDI to MARC21 is currently being served at (VP
 
 # Status
 
-The software has no official release yet. The software has experimental support for CMDI v1.2.
+The software has no official release yet. The software has NO experimental support for CMDI v1.2 YET.
 
 NaLiDa2Marc exploits context-specific information from SfS-based CMDI profiles to minimize information loss.
 For a general transformation from CMDI to MARC-21 (with more information loss), please consult Cmdi2Marc. 

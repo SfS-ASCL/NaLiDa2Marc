@@ -9,7 +9,7 @@
      </xsl:copy>
  </xsl:template>
 
- <xsl:template match="@*|node()">
+ <xsl:template match="@*|node()" priority="5">
   <xsl:if test="normalize-space(.) != '' or ./@* != ''">
     <xsl:copy>
        <xsl:copy-of select = "@*"/>

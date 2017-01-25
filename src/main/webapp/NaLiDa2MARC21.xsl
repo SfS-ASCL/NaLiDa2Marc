@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:cmd="http://www.clarin.eu/cmd/" xmlns:foo="foo.com">
+<xsl:stylesheet version="1.0"
+		xmlns="http://www.loc.gov/MARC21/slim"
+		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+		xmlns:cmd="http://www.clarin.eu/cmd/"
+		xmlns:cmde="http://www.clarin.eu/cmd/1"		
+		xmlns:foo="foo.com">
 	<xsl:output method="xml" indent="yes"/>
         
         <!-- <xsl:strip-space elements="cmd:Description"/> -->

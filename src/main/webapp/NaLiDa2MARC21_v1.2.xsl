@@ -3,6 +3,7 @@
 		xmlns="http://www.loc.gov/MARC21/slim"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
 		xmlns:cmd="http://www.clarin.eu/cmd/"
 		xmlns:cmde="http://www.clarin.eu/cmd/1"
@@ -53,13 +54,34 @@
 		<!-- CMDI 1.2 ignoring resources -->
 	</xsl:template>
 	
+	<!-- This need to be OR'ed for all valid NaLiDa-based profiles -->
 	<xsl:template match="/cmd:CMD/cmd:Components">
-		<!-- CMDI 1.1 -->
-		<xsl:call-template name="mainProcessing"></xsl:call-template>
+		<xsl:choose>
+			<xsl:when test="contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587892')">
+				<!-- CMDI 1.1 -->
+				<xsl:call-template name="mainProcessing"></xsl:call-template>	
+			</xsl:when>
+			<xsl:otherwise>
+				<error>
+					<xsl:text>Please use a valid CMDI schema v1.1 from the NaLiDa project.</xsl:text>
+				</error>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
+	
 	<xsl:template match="/cmde:CMD/cmde:Components">
-		<!-- CMDI 1.2 -->
-		<xsl:call-template name="mainProcessing"></xsl:call-template>
+		<xsl:choose>
+			<xsl:when test="contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')">
+				<!-- CMDI 1.2 -->
+				<xsl:call-template name="mainProcessing"></xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<error>
+					<xsl:text>Please use a valid CMDI v1.2 schema from the NaLiDa project.</xsl:text>
+				</error>
+			</xsl:otherwise>
+		</xsl:choose>
+		
 	</xsl:template>
 	
     <xsl:template name="mainProcessing">

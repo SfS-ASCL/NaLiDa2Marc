@@ -54,10 +54,19 @@
 		<!-- CMDI 1.2 ignoring resources -->
 	</xsl:template>
 	
+	<!-- ToolProfile:            clarin.eu:cr1:p_1447674760338 
+		 TextCorpusProfile:      clarin.eu:cr1:p_1442920133046
+		 LexicalResourceProfile: clarin.eu:cr1:p_1445542587893
+		 ExperimentProfile:      clarin.eu:cr1:p_1447674760337
+    -->
+	
 	<!-- This need to be OR'ed for all valid NaLiDa-based profiles -->
 	<xsl:template match="/cmd:CMD/cmd:Components">
 		<xsl:choose>
-			<xsl:when test="contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587892')">
+			<xsl:when test="contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760338')
+				or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1442920133046')
+				or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')
+				or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760337')">
 				<!-- CMDI 1.1 -->
 				<xsl:call-template name="mainProcessing"></xsl:call-template>	
 			</xsl:when>
@@ -71,7 +80,10 @@
 	
 	<xsl:template match="/cmde:CMD/cmde:Components">
 		<xsl:choose>
-			<xsl:when test="contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')">
+			<xsl:when test="contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760338')
+				or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1442920133046')
+				or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')
+				or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760337')">
 				<!-- CMDI 1.2 -->
 				<xsl:call-template name="mainProcessing"></xsl:call-template>
 			</xsl:when>

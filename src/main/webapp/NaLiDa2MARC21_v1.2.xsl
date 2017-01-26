@@ -62,38 +62,52 @@
 	
 	<!-- This need to be OR'ed for all valid NaLiDa-based profiles -->
 	<xsl:template match="/cmd:CMD/cmd:Components">
-		<xsl:choose>
-			<xsl:when test="contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760338')
-				or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1442920133046')
-				or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')
-				or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760337')">
-				<!-- CMDI 1.1 -->
-				<xsl:call-template name="mainProcessing"></xsl:call-template>	
-			</xsl:when>
-			<xsl:otherwise>
-				<error>
-					<xsl:text>Please use a valid CMDI schema v1.1 from the NaLiDa project.</xsl:text>
-				</error>
-			</xsl:otherwise>
-		</xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760338')
+			    or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1442920133046')
+			    or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')
+			    or contains(/cmd:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760337')">
+	      <!-- CMDI 1.1 -->
+	      <xsl:call-template name="mainProcessing"></xsl:call-template>	
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <error>
+		<xsl:text>
+		  Please use a valid CMDI schema v1.1 from the NaLiDa project.
+		  Currently the following profiles are being supported:
+		
+		  - ToolProfile (clarin.eu:cr1:p_1447674760338),
+		  - TextCorpusProfile ('clarin.eu:cr1:p_1442920133046),
+		  - LexicalResourceProfile (clarin.eu:cr1:p_1445542587893), and
+		  - ExperimentProfile (clarin.eu:cr1:p_1447674760337).
+		</xsl:text>
+	      </error>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:template>
 	
 	<xsl:template match="/cmde:CMD/cmde:Components">
-		<xsl:choose>
-			<xsl:when test="contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760338')
-				or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1442920133046')
-				or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')
-				or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760337')">
-				<!-- CMDI 1.2 -->
-				<xsl:call-template name="mainProcessing"></xsl:call-template>
-			</xsl:when>
-			<xsl:otherwise>
-				<error>
-					<xsl:text>Please use a valid CMDI v1.2 schema from the NaLiDa project.</xsl:text>
-				</error>
-			</xsl:otherwise>
-		</xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760338')
+			    or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1442920133046')
+			    or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1445542587893')
+			    or contains(/cmde:CMD/@xsi:schemaLocation, 'clarin.eu:cr1:p_1447674760337')">
+	      <!-- CMDI 1.2 -->
+	      <xsl:call-template name="mainProcessing"></xsl:call-template>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <error>
+		<xsl:text>
+		Please use a valid CMDI v1.2 schema from the NaLiDa project.
+		Currently the following profiles are being supported:
 		
+		- ToolProfile (clarin.eu:cr1:p_1447674760338),
+		- TextCorpusProfile ('clarin.eu:cr1:p_1442920133046),
+		- LexicalResourceProfile (clarin.eu:cr1:p_1445542587893), and
+		- ExperimentProfile (clarin.eu:cr1:p_1447674760337).</xsl:text>
+	      </error>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:template>
 	
     <xsl:template name="mainProcessing">
